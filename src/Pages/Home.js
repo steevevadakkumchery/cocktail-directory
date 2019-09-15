@@ -52,7 +52,7 @@ function Home() {
           <RandomCocktail height="400px" width="400px" />
         </Suspense>
         <TextArea>
-          <Title>Become a professional barista</Title>
+          <Title>Become a professional bartender</Title>
         </TextArea>
       </Content>
     </Page>

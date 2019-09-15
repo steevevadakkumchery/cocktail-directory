@@ -14,7 +14,7 @@ const NavigationContainer = styled.nav`
     props.currentPage === '/' &&
     `
       font-weight: 900;
-      height: 16rem;
+      height: 6rem;
       justify-content: space-between;
       position: absolute;
       left: 40px;
@@ -29,7 +29,7 @@ const Links = styled.div`
   margin-bottom: 1rem;
   flex-direction: ${props => (props.currentPage === '/' ? 'column' : 'row')};
   font-size: ${props => (props.currentPage === '/' ? '2em' : '1em')};
-  width: ${props => (props.currentPage === '/' ? '200px' : '40rem')};
+  width: ${props => (props.currentPage === '/' ? '200px' : '10rem')};
   height: inherit;
 `;
 
@@ -63,8 +63,6 @@ function Navigation({ location }) {
       <Links currentPage={location.pathname}>
         <StyledLink to="/">{'Home'.toUpperCase()}</StyledLink>
         <StyledLink to="/cocktails">{'Cocktails'.toUpperCase()}</StyledLink>
-        <StyledLink to="/ingredients">{'Ingredients'.toUpperCase()}</StyledLink>
-        <StyledLink to="/cocktail-roulette">{'Cocktail Roulette'.toUpperCase()}</StyledLink>
       </Links>
     </NavigationContainer>
   );
