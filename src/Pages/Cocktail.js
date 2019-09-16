@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import getCocktailData from '../helpers/getCocktailData';
 import Page from '../Components/Page';
 import CocktailDescripton from '../Components/CocktailDescripton';
-import { Redirect, withRouter } from 'react-router-dom';
+import ErrorBoundary from '../Components/ErrorBoundary';
+
+import { withRouter } from 'react-router-dom';
 
 let CocktailDescriptionWithData;
 
@@ -22,7 +24,9 @@ class Cocktail extends Component {
     if (id) {
       return (
         <Page>
-          <CocktailDescriptionWithData />
+          <ErrorBoundary>
+            <CocktailDescriptionWithData />
+          </ErrorBoundary>
         </Page>
       );
     } else {
