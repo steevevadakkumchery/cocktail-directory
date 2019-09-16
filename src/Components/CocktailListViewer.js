@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import styled from 'styled-components';
 import { alphabet } from '../helpers/globalConstants';
-import FilteredCocktails from '../Components/FilteredCocktails';
 import getCocktailData from '../helpers/getCocktailData';
+const FilteredCocktails = React.lazy(() => import('../Components/FilteredCocktails'));
 
 const Viewer = styled.div`
   color: #fff;
@@ -33,6 +33,18 @@ const Letter = styled.button`
     background-color: grey;
     outline: 0;
   }
+`;
+
+const SampleItems = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* see notes below */
+  grid-gap: 3rem;
+`;
+
+const EmptyBoxes = styled.div`
+  width: 400px;
+  height: 400px;
+  background-color: grey;
 `;
 
 let FilteredCocktailsWithData = getCocktailData(FilteredCocktails, '/api/json/v1/1/search.php?f=a');
@@ -72,7 +84,17 @@ class CocktailListViewer extends Component {
             </Letter>
           ))}
         </LetterList>
-        <FilteredCocktailsWithData />
+        <Suspense
+          fallback={
+            <SampleItems>
+              {[1, 2, 3, 4].map(() => (
+                <EmptyBoxes />
+              ))}
+            </SampleItems>
+          }
+        >
+          <FilteredCocktailsWithData />
+        </Suspense>
       </Viewer>
     );
   }

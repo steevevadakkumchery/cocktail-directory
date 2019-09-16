@@ -31,7 +31,7 @@ class ErrorBoundary extends Component {
       return (
         <ErrorBox>
           <img width="200px" height="200px" src={warningIcon} />
-          <h1>Sorry Failed to Load Data</h1>
+          <h1>Sorry Failed To Load Data</h1>
         </ErrorBox>
       );
     }
