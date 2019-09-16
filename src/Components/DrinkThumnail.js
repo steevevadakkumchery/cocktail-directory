@@ -5,6 +5,7 @@ const ThumnailFrame = styled.div`
   width: 200px;
   height: 200px;
   position: relative;
+  cursor: pointer;
 `;
 
 const Name = styled.span`

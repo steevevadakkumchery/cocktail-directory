@@ -14,7 +14,6 @@ function getCocktailData(ComponentWithoutData, query) {
       fetch(`https://www.thecocktaildb.com${query}`)
         .then(response => response.json())
         .then(data => {
-          debugger;
           this.setState({ data: data });
         })
         .catch(error => {

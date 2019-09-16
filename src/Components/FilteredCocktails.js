@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import DrinkThumbnail from '../Components/DrinkThumnail';
 
 const ListContainer = styled.div`
@@ -28,7 +30,11 @@ class FilteredCocktails extends Component {
         <List>
           {cocktailsFound &&
             cocktailData.drinks.map(drink => {
-              return <DrinkThumbnail drink={drink} />;
+              return (
+                <Link to={`/cocktail/${drink.idDrink}`}>
+                  <DrinkThumbnail drink={drink} />
+                </Link>
+              );
             })}
           {!cocktailsFound && <h1>No Drinks Found</h1>}
         </List>
