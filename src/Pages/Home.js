@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import logo from '../assets/logo-white.png';
 import Page from '../Components/Page';
 import Title from '../Components/Title';
+import ErrorBoundary from '../Components/ErrorBoundary';
 const RandomCocktail = React.lazy(() => import('./../Components/RandomCocktail'));
 
 const TitleContainer = styled.header`
@@ -44,17 +45,23 @@ const TextArea = styled.span`
 function Home() {
   return (
     <Page>
-      <TitleContainer>
-        <LogoImage src={logo} height="168px" alt="cocktail directory" />
-      </TitleContainer>
-      <Content>
-        <Suspense fallback={<Loader>Loading...</Loader>}>
-          <RandomCocktail height="400px" width="400px" />
-        </Suspense>
-        <TextArea>
-          <Title>Become a professional bartender</Title>
-        </TextArea>
-      </Content>
+      <ErrorBoundary>
+        <TitleContainer>
+          <ErrorBoundary>
+            <LogoImage src={logo} height="168px" alt="cocktail directory" />
+          </ErrorBoundary>
+        </TitleContainer>
+        <Content>
+          <Suspense fallback={<Loader>Loading...</Loader>}>
+            <ErrorBoundary>
+              <RandomCocktail hseight="400px" width="400px" />
+            </ErrorBoundary>
+          </Suspense>
+          <TextArea>
+            <Title>Become a professional bartender</Title>
+          </TextArea>
+        </Content>
+      </ErrorBoundary>
     </Page>
   );
 }

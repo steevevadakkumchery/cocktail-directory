@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorBoundary from '../Components/ErrorBoundary';
 
 function getCocktailData(ComponentWithoutData, query) {
   class ComponentWithData extends Component {
@@ -7,6 +8,7 @@ function getCocktailData(ComponentWithoutData, query) {
 
       this.state = {
         data: null,
+        error: false,
       };
     }
 
@@ -15,14 +17,24 @@ function getCocktailData(ComponentWithoutData, query) {
         .then(response => response.json())
         .then(data => {
           this.setState({ data: data });
+          return;
         })
         .catch(error => {
-          throw new Error("Can't get data");
+          this.setState({ error: true });
         });
     }
 
     render() {
-      return <ComponentWithoutData cocktailData={this.state.data} {...this.props} />;
+      if (this.state.error) {
+        this.setState({ error: false });
+        throw new Error('I crashed');
+      }
+
+      return (
+        <ErrorBoundary>
+          <ComponentWithoutData cocktailData={this.state.data} {...this.props} />
+        </ErrorBoundary>
+      );
     }
   }
 

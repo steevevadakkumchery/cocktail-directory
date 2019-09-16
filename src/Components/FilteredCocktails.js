@@ -10,18 +10,15 @@ const ListContainer = styled.div`
 
 const List = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* see notes below */
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* see notes below */
   grid-gap: 3rem;
+  text-align: center;
 `;
 
 class FilteredCocktails extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { cocktailData } = this.props;
-    let cocktailsFound = false;
+    let cocktailsFound = null;
     if (cocktailData) {
       cocktailsFound = Boolean(cocktailData.drinks);
     }
@@ -36,7 +33,8 @@ class FilteredCocktails extends Component {
                 </Link>
               );
             })}
-          {!cocktailsFound && <h1>No Drinks Found</h1>}
+          {cocktailsFound === false && <h1>No Drinks Found</h1>}
+          {cocktailsFound === null && null}
         </List>
       </ListContainer>
     );

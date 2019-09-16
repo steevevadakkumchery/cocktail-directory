@@ -59,7 +59,7 @@ const Logo = styled.img`
 function Navigation({ location }) {
   return (
     <NavigationContainer currentPage={location.pathname}>
-      {location.pathname !== '/' && <Logo src={logo} />}
+      {location.pathname !== '/' && <Logo width="20rem" height="111.98px" src={logo} />}
       <Links currentPage={location.pathname}>
         <StyledLink to="/">{'Home'.toUpperCase()}</StyledLink>
         <StyledLink to="/cocktails">{'Cocktails'.toUpperCase()}</StyledLink>
