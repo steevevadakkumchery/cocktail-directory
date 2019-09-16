@@ -1,0 +1,2 @@
+(window["webpackJsonpcocktail-directory"]=window["webpackJsonpcocktail-directory"]||[]).push([[4],{47:function(t,n,r){"use strict";r.r(n);var i=r(1),c=r(0),a=r.n(c),e=r(18);function o(){var t=Object(i.a)(["\n  border: 6px solid #ddd;\n"]);return o=function(){return t},t}var d=r(2).b.img(o());n.default=Object(e.a)((function(t){var n=t.cocktailData,r=t.height,i=t.width;return n?a.a.createElement(d,{height:r,width:i,src:n.drinks[0].strDrinkThumb}):null}),"/api/json/v1/1/random.php")}}]);
+//# sourceMappingURL=4.2b38df15.chunk.js.map

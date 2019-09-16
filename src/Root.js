@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Pages/Home';
 import CocktailsList from './Pages/CocktailsList';
 import Navigation from './Components/Navigation';
@@ -18,11 +18,12 @@ function Root() {
     <Router>
       <GlobalStyle />
       <Navigation />
-      <Route path="/" exact component={Home} />
-      <Route path="/cocktails" component={CocktailsList} />
-      <Route path="/cocktail/" component={Cocktail} />
-      <Route path="/cocktail/:id" component={Cocktail} />
-      <Route path="*" component={PageNotFound} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/cocktails" component={CocktailsList} />
+        <Route path="/cocktail/:id" component={Cocktail} />
+        <Route path="*" component={PageNotFound} />
+      </Switch>
     </Router>
   );
 }
