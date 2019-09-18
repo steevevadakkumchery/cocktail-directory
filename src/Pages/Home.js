@@ -54,7 +54,7 @@ function Home() {
         <Content>
           <Suspense fallback={<Loader>Loading...</Loader>}>
             <ErrorBoundary>
-              <RandomCocktail hseight="400px" width="400px" />
+              <RandomCocktail height="400px" width="400px" />
             </ErrorBoundary>
           </Suspense>
           <TextArea>
